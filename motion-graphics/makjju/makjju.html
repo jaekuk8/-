@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>막쮸 모션그래픽</title>
+<style>
+@font-face{font-family:Jua;src:url(fonts/Jua.ttf)}
+@font-face{font-family:BHS;src:url(fonts/BlackHanSans.ttf)}
+@font-face{font-family:Gowun;src:url(fonts/GowunDodum.ttf)}
+html,body{margin:0;background:#000}
+svg{display:block;width:1080px;height:1920px}
+</style></head>
+<body>
+<svg id="stage" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="skyG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFF7E4"/><stop offset="1" stop-color="#FCDDA6"/></linearGradient>
+  <linearGradient id="fieldG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EBCB7C"/><stop offset="1" stop-color="#D3A44C"/></linearGradient>
+  <linearGradient id="wallG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F4E9D4"/><stop offset="1" stop-color="#E5CFA9"/></linearGradient>
+  <linearGradient id="floorG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C99F6E"/><stop offset="1" stop-color="#A97E52"/></linearGradient>
+  <linearGradient id="jarG" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#A06C43"/><stop offset=".45" stop-color="#7A4A2A"/><stop offset="1" stop-color="#4E2D19"/></linearGradient>
+  <linearGradient id="lidG" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9A6640"/><stop offset="1" stop-color="#5A3520"/></linearGradient>
+  <radialGradient id="glowG"><stop offset="0" stop-color="#FFF8E8" stop-opacity=".95"/><stop offset="1" stop-color="#FFF8E8" stop-opacity="0"/></radialGradient>
+  <radialGradient id="raysBgG" cx=".5" cy=".57" r=".7"><stop offset="0" stop-color="#FBF5EA"/><stop offset="1" stop-color="#EEE2CC"/></radialGradient>
+  <pattern id="crimp" width="9" height="10" patternUnits="userSpaceOnUse"><rect width="9" height="10" fill="#EDE4D4"/><rect width="2" height="10" fill="#D8CAB4"/></pattern>
+  <filter id="sh" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="7" stdDeviation="0" flood-color="#3B2A20" flood-opacity=".22"/></filter>
+  <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#3B2A20" flood-opacity=".25"/></filter>
+  <clipPath id="packClip"><rect x="-235" y="-335" width="470" height="670" rx="10"/></clipPath>
+</defs>
+
+<!-- 장면 1: 논 -->
+<g id="s1">
+  <rect width="1080" height="1920" fill="url(#skyG)"/>
+  <circle id="sunGlow" cx="820" cy="760" r="300" fill="url(#glowG)"/>
+  <circle cx="820" cy="760" r="130" fill="#FFD583"/>
+  <g id="cloud1"></g><g id="cloud2"></g>
+  <path d="M0 1380 Q 220 1250 470 1340 T 1080 1300 L1080 1920 L0 1920Z" fill="#E9D59A"/>
+  <rect y="1450" width="1080" height="470" fill="url(#fieldG)"/>
+  <g id="stalksBack"></g>
+</g>
+
+<!-- 장면 2: 항아리 -->
+<g id="s2" opacity="0">
+  <rect width="1080" height="1920" fill="url(#wallG)"/>
+  <circle cx="540" cy="1150" r="620" fill="url(#glowG)"/>
+  <g id="motes"></g>
+  <rect y="1440" width="1080" height="480" fill="url(#floorG)"/>
+  <g stroke="#9C7148" stroke-width="4" opacity=".55">
+    <line x1="0" y1="1560" x2="1080" y2="1560"/><line x1="0" y1="1700" x2="1080" y2="1700"/><line x1="0" y1="1850" x2="1080" y2="1850"/>
+    <line x1="300" y1="1440" x2="300" y2="1560"/><line x1="780" y1="1440" x2="780" y2="1560"/>
+    <line x1="160" y1="1560" x2="160" y2="1700"/><line x1="620" y1="1560" x2="620" y2="1700"/><line x1="420" y1="1700" x2="420" y2="1850"/><line x1="900" y1="1700" x2="900" y2="1850"/>
+  </g>
+  <ellipse cx="540" cy="1565" rx="320" ry="38" fill="#7A5534" opacity=".35"/>
+  <g id="bubbles"></g>
+  <g id="jar">
+    <path d="M-150 -500 C-260 -470 -300 -330 -290 -230 C-280 -100 -200 -10 -150 0 L150 0 C200 -10 280 -100 290 -230 C300 -330 260 -470 150 -500 Z" fill="url(#jarG)" stroke="#3E2414" stroke-width="7"/>
+    <path d="M-235 -330 C-200 -310 -160 -350 -120 -330 S -40 -310 0 -330 S 80 -350 120 -330 S 200 -310 235 -330" fill="none" stroke="#C8A27A" stroke-width="7" stroke-linecap="round" opacity=".8"/>
+    <path d="M-250 -260 C-200 -240 -160 -280 -120 -260 S -40 -240 0 -260 S 80 -280 120 -260 S 200 -240 250 -260" fill="none" stroke="#C8A27A" stroke-width="5" stroke-linecap="round" opacity=".55"/>
+    <path d="M-215 -420 C-250 -340 -250 -200 -200 -110" fill="none" stroke="#fff" stroke-width="22" stroke-linecap="round" opacity=".16"/>
+    <rect x="-168" y="-538" width="336" height="48" rx="24" fill="#6B4027" stroke="#3E2414" stroke-width="7"/>
+    <ellipse id="jarMouth" cx="0" cy="-528" rx="140" ry="14" fill="#2E1A0E"/>
+  </g>
+  <g id="splash"></g>
+  <g id="lid">
+    <path d="M-178 0 Q-172 -78 0 -88 Q172 -78 178 0 Z" fill="url(#lidG)" stroke="#3E2414" stroke-width="7" stroke-linejoin="round"/>
+    <ellipse cx="0" cy="-92" rx="36" ry="16" fill="#6B4027" stroke="#3E2414" stroke-width="6"/>
+    <path d="M-120 -30 Q-90 -62 -30 -70" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity=".2"/>
+  </g>
+  <g id="dust"></g>
+  <g id="burst"></g>
+  <g id="dots"></g>
+  <g id="badge">
+    <circle r="96" fill="#3B2A20"/>
+    <circle r="82" fill="none" stroke="#F6EFE2" stroke-width="4" stroke-dasharray="10 9" opacity=".6"/>
+    <text id="badgeNum" y="38" text-anchor="middle" font-family="BHS" font-size="112" fill="#F6EFE2">1</text>
+    <g transform="translate(0 140)"><rect x="-92" y="-36" width="184" height="58" rx="29" fill="#F6EFE2" stroke="#3B2A20" stroke-width="5"/><text y="6" text-anchor="middle" font-family="Jua" font-size="38" fill="#3B2A20">번째 발효</text></g>
+  </g>
+</g>
+
+<!-- 장면 3~5 배경 -->
+<g id="s3" opacity="0">
+  <rect width="1080" height="1920" fill="url(#raysBgG)"/>
+  <g id="raysG" opacity=".55"></g>
+  <rect id="pinkTint" width="1080" height="1920" fill="#F9D9D3" opacity="0"/>
+  <g id="sparkles"></g>
+</g>
+
+<g id="grain"></g>
+<g id="s1front"></g>
+<g id="hearts"></g>
+<g id="pack"></g>
+<g id="candy"></g>
+<g id="texts"></g>
+<rect id="flash" width="1080" height="1920" fill="#FFFDF6" opacity="0"/>
+</svg>
+
+<script>
+const C={cream:'#F6EFE2',brown:'#3B2A20',mid:'#7A5A42',taupe:'#A8957F',rice:'#FFFDF6',blush:'#F5A3A0',accent:'#D9663B',pink:'#E46F86'};
+const NS='http://www.w3.org/2000/svg';
+const $=id=>document.getElementById(id);
+const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
+const prog=(t,a,b)=>clamp((t-a)/(b-a));
+const lerp=(a,b,p)=>a+(b-a)*p;
+const eOutBack=p=>{const c1=1.9,c3=c1+1;return 1+c3*Math.pow(p-1,3)+c1*Math.pow(p-1,2)};
+const eOutCubic=p=>1-Math.pow(1-p,3);
+const eInCubic=p=>p*p*p;
+const eInOut=p=>p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2;
+const eOutElastic=p=>p<=0?0:p>=1?1:Math.pow(2,-10*p)*Math.sin((p*10-.75)*(2*Math.PI/3))+1;
+function el(tag,attrs,parent){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(parent)(typeof parent==='string'?$(parent):parent).appendChild(e);return e;}
+function add(id,s){$(id).insertAdjacentHTML('beforeend',s);}
+function T(e,x,y,s=1,r=0,sx=1,sy=1){(typeof e==='string'?$(e):e).setAttribute('transform',`translate(${x} ${y}) rotate(${r}) scale(${s*sx} ${s*sy})`);}
+function O(e,v){(typeof e==='string'?$(e):e).setAttribute('opacity',clamp(v));}
+function rng(seed){return()=>{seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+
+/* ---------- 글자 (한 글자씩 튀어나오는 효과) ---------- */
+const TX={};
+function makeText(parent,key,str,x,y,o={}){
+  const size=o.size||110,font=o.font||'Jua',fill=o.fill||C.brown,stroke=o.stroke||'#fff',sw=o.sw??16;
+  const g=el('g',{id:key},parent);
+  const tmp=el('text',{x:0,y:0,'font-family':font,'font-size':size},g);
+  tmp.textContent=str;
+  const total=tmp.getComputedTextLength(),left=x-total/2,chars=[];
+  for(let i=0;i<str.length;i++){
+    if(str[i]===' ')continue;
+    const ex=tmp.getExtentOfChar(i);
+    const cg=el('g',{},g);
+    const a={x:0,y:size*.35,'text-anchor':'middle','font-family':font,'font-size':size,fill,stroke,'stroke-width':sw,'stroke-linejoin':'round','paint-order':'stroke'};
+    if(o.shadow!==false)a.filter='url(#sh)';
+    el('text',a,cg).textContent=str[i];
+    chars.push({g:cg,x:left+ex.x+ex.width/2,py:y-size*.35});
+  }
+  tmp.remove();
+  TX[key]={g,chars};
+}
+function animText(key,t,t0,o={}){
+  const {stagger=.05,dur=.45,out=null,rise=50}=o;
+  TX[key].chars.forEach((c,i)=>{
+    const p=prog(t,t0+i*stagger,t0+i*stagger+dur);
+    let s=p<=0?0:eOutBack(p),a=p>0?1:0;
+    const dy=(1-eOutCubic(p))*rise;
+    if(out){const q=prog(t,out[0],out[1]);a*=1-q;s*=1-q*.3;}
+    c.g.setAttribute('transform',`translate(${c.x} ${c.py+dy}) scale(${s})`);
+    c.g.setAttribute('opacity',a);
+  });
+}
+
+/* ---------- 캐릭터 ---------- */
+function face(prefix){
+  return `
+  <g id="${prefix}EyesOpen"><ellipse cx="-48" cy="-12" rx="13" ry="17" fill="${C.brown}"/><ellipse cx="48" cy="-12" rx="13" ry="17" fill="${C.brown}"/>
+    <circle cx="-44" cy="-18" r="5" fill="#fff"/><circle cx="52" cy="-18" r="5" fill="#fff"/></g>
+  <g id="${prefix}EyesClosed" opacity="0" fill="none" stroke="${C.brown}" stroke-width="7" stroke-linecap="round">
+    <path d="M-62 -10 Q-48 4 -34 -10"/><path d="M34 -10 Q48 4 62 -10"/></g>
+  <g id="${prefix}EyesSq" opacity="0" fill="none" stroke="${C.brown}" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M-62 -26 L-38 -12 L-62 2"/><path d="M62 -26 L38 -12 L62 2"/></g>
+  <ellipse cx="-82" cy="22" rx="22" ry="13" fill="${C.blush}" opacity=".85"/><ellipse cx="82" cy="22" rx="22" ry="13" fill="${C.blush}" opacity=".85"/>
+  <path id="${prefix}MSmile" d="M-16 20 Q0 36 16 20" fill="none" stroke="${C.brown}" stroke-width="7" stroke-linecap="round"/>
+  <path id="${prefix}MOpen" opacity="0" d="M-18 16 Q0 14 18 16 Q16 46 0 46 Q-16 46 -18 16Z" fill="#8C3B2E" stroke="${C.brown}" stroke-width="6" stroke-linejoin="round"/>
+  <path id="${prefix}MKiss" opacity="0" d="M-2 12 Q16 14 6 24 Q18 30 -2 38" fill="none" stroke="${C.brown}" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>`;
+}
+function setFace(p,eyes,mouth){
+  O(p+'EyesOpen',eyes==='open');O(p+'EyesClosed',eyes==='closed');O(p+'EyesSq',eyes==='sq');
+  O(p+'MSmile',mouth==='smile');O(p+'MOpen',mouth==='open');O(p+'MKiss',mouth==='kiss');
+}
+function buildCandy(){
+  add('candy',`
+   <g id="cBody">
+    <g stroke="${C.brown}" stroke-width="7" stroke-linecap="round" fill="none">
+      <path d="M-45 108 L-50 160"/><path d="M45 108 L50 160"/>
+    </g>
+    <ellipse cx="-56" cy="164" rx="20" ry="10" fill="${C.brown}"/><ellipse cx="56" cy="164" rx="20" ry="10" fill="${C.brown}"/>
+    <path id="cArmL" d="M-128 18 Q-160 0 -182 -26" fill="none" stroke="${C.brown}" stroke-width="7" stroke-linecap="round"/>
+    <g id="cArmR"><path d="M0 0 Q32 -18 54 -44" fill="none" stroke="${C.brown}" stroke-width="7" stroke-linecap="round"/></g>
+    <rect x="-130" y="-112" width="260" height="222" rx="62" fill="${C.rice}" stroke="${C.brown}" stroke-width="7"/>
+    <path d="M-118 60 Q-120 100 -70 104 L70 104 Q120 100 118 60" fill="#EFE5D3" opacity=".9"/>
+    <rect x="-130" y="-112" width="260" height="222" rx="62" fill="none" stroke="${C.brown}" stroke-width="7"/>
+    <path d="M-92 -86 Q-60 -100 -20 -98" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round"/>
+    <g transform="translate(46 -126) rotate(24)"><ellipse rx="15" ry="24" fill="${C.rice}" stroke="${C.brown}" stroke-width="6"/><path d="M-4 12 Q4 6 8 14" fill="none" stroke="${C.brown}" stroke-width="4" stroke-linecap="round"/></g>
+    ${face('c')}
+   </g>`);
+}
+function buildGrain(){
+  add('grain',`
+   <g stroke="${C.brown}" stroke-width="7" stroke-linecap="round" fill="none">
+     <path id="gArmL" d="M-66 10 Q-96 -4 -110 -30"/><path id="gArmR" d="M66 10 Q96 -4 110 -30"/>
+   </g>
+   <path d="M0 -98 C55 -98 74 -40 72 10 C70 66 44 98 0 98 C-44 98 -70 66 -72 10 C-74 -40 -55 -98 0 -98Z" fill="${C.rice}" stroke="${C.brown}" stroke-width="7"/>
+   <path d="M30 74 Q46 64 52 80" fill="none" stroke="${C.brown}" stroke-width="5" stroke-linecap="round"/>
+   <path d="M-40 -66 Q-20 -84 6 -84" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round"/>
+   <g transform="scale(.82)">${face('g')}</g>`);
+}
+
+/* ---------- 포장 봉투 (단순화해서 다시 그림) ---------- */
+function buildPack(){
+  const N=26;let top='',bot='';
+  for(let k=0;k<=N;k++){const x=-235+k*470/N;top+=` L${x} ${-334-(k%2?8:0)}`;}
+  for(let k=N;k>=0;k--){const x=-235+k*470/N;bot+=` L${x} ${334+(k%2?8:0)}`;}
+  add('pack',`
+  <g filter="url(#soft)">
+   <path d="M-235 -334 ${top} L235 334 ${bot} Z" fill="#F6F0E5" stroke="#D3C4AD" stroke-width="3"/>
+  </g>
+  <g clip-path="url(#packClip)">
+   <path d="M60 340 L60 0 Q60 -40 100 -40 L240 -40 L240 340Z" fill="#A6927B"/>
+   <rect x="-240" y="-340" width="480" height="40" fill="url(#crimp)"/>
+   <rect x="-240" y="300" width="480" height="40" fill="url(#crimp)"/>
+   <text x="-150" y="-252" text-anchor="middle" font-family="BHS" font-size="30" fill="#6E5440" letter-spacing="2">CROWN</text>
+   <g font-family="Jua" font-size="66" fill="#A88E70" text-anchor="middle"><text x="-150" y="-160">국</text><text x="-150" y="-88">순</text><text x="-150" y="-16">당</text></g>
+   <g font-family="BHS" font-size="200" fill="#1F1A16" text-anchor="middle"><text x="20" y="-104">막</text><text x="20" y="64">쮸</text></g>
+   <circle cx="172" cy="122" r="70" fill="#56703F" stroke="#F6F0E5" stroke-width="5"/>
+   <g font-family="Jua" font-size="30" fill="#fff" text-anchor="middle"><text x="172" y="114">발효쌀</text><text x="172" y="148">츄잉캔디</text></g>
+   <g font-family="Gowun" font-size="23" fill="#4A3A2E" text-anchor="middle" font-weight="700"><text x="-90" y="112">세 번의 발효로</text><text x="-90" y="140">부드러운 풍미를 더한</text><text x="-90" y="168">발효쌀 츄잉캔디</text></g>
+   ${[[-170,274,-12],[-80,266,8],[-128,234,-4]].map(([x,y,r])=>`<g transform="translate(${x} ${y}) rotate(${r})"><rect x="-46" y="-34" width="92" height="68" rx="16" fill="#FFFDF8" stroke="#D9CDBB" stroke-width="3"/><rect x="-46" y="10" width="92" height="24" rx="12" fill="#E9DFCF"/></g>`).join('')}
+   <g font-family="Jua" fill="#fff" text-anchor="middle"><text x="160" y="250" font-size="40">100%</text><text x="160" y="288" font-size="30">국내산 쌀</text></g>
+   <g id="packShine"><rect x="-60" y="-500" width="70" height="1000" fill="#fff" opacity=".35" transform="rotate(25)"/></g>
+  </g>`);
+}
+
+/* ---------- 배경 소품 ---------- */
+function stalk(h,col,head,lean){
+  let s=`<path d="M0 0 Q${lean*.3} ${-h*.55} ${lean} ${-h}" stroke="${col}" stroke-width="6" fill="none" stroke-linecap="round"/>`;
+  s+=`<path d="M0 ${-h*.22} Q-36 ${-h*.42} -56 ${-h*.34}" stroke="${col}" stroke-width="5" fill="none" stroke-linecap="round"/>`;
+  const dir=lean>=0?1:-1;
+  for(let k=0;k<8;k++){const a=k/7,gx=lean+a*30*dir,gy=-h+a*a*70-6;
+    s+=`<ellipse cx="${gx+(k%2?7:-7)}" cy="${gy}" rx="8" ry="14" fill="${head}" transform="rotate(${dir*(15+a*45)} ${gx} ${gy})"/>`;}
+  return s;
+}
+const STALKS=[];
+function buildField(){
+  const r=rng(7);
+  const rows=[
+    {p:'stalksBack',y:1480,n:15,h:200,col:'#C99B42',head:'#E3BD62'},
+    {p:'stalksBack',y:1600,n:13,h:250,col:'#BF8F37',head:'#E7C068'},
+    {p:'s1front',y:1770,n:11,h:300,col:'#B5842E',head:'#EDC66C'},
+    {p:'s1front',y:1950,n:10,h:360,col:'#A9792A',head:'#F1CB72'}];
+  rows.forEach((row,ri)=>{
+    if(ri===2)add('s1front',`<rect y="1700" width="1080" height="220" fill="#D3A44C"/>`);
+    for(let i=0;i<row.n;i++){
+      const x=(i+.5)*1080/row.n+(r()-.5)*40,lean=(r()-.4)*50;
+      const g=el('g',{},row.p);g.innerHTML=stalk(row.h*(.85+r()*.3),row.col,row.head,lean);
+      STALKS.push({g,x,y:row.y,ph:r()*6,amp:2+ri});
+    }
+  });
+  const cloud=(id,s)=>add(id,`<g fill="#fff" opacity=".9" transform="scale(${s})"><circle cx="0" cy="0" r="52"/><circle cx="60" cy="-22" r="64"/><circle cx="128" cy="0" r="50"/><rect x="0" y="-10" width="128" height="60" rx="30"/></g>`);
+  cloud('cloud1',1);cloud('cloud2',.75);
+}
+const BUB=[];
+function buildJarFx(){
+  const r=rng(21);
+  for(let k=0;k<3;k++)for(let i=0;i<11;i++){
+    const c=el('circle',{r:12+r()*22,fill:'#FFFDF6','fill-opacity':.85,stroke:C.brown,'stroke-width':4},'bubbles');
+    BUB.push({c,round:k,d:r()*.55,x0:540+(r()-.5)*320,rise:260+r()*260,ph:r()*6});
+  }
+  for(let i=0;i<9;i++){const a=Math.PI*(1.06+i/8*.88);el('line',{x1:Math.cos(a)*170,y1:Math.sin(a)*170,x2:Math.cos(a)*270,y2:Math.sin(a)*270,stroke:C.accent,'stroke-width':12,'stroke-linecap':'round'},'burst');}
+  for(let i=0;i<6;i++)el('circle',{r:26,fill:'#F4E7CF'},'dust');
+  for(let i=0;i<6;i++)el('circle',{r:12,fill:'#FFFDF6',stroke:C.brown,'stroke-width':4},'splash');
+  for(let i=0;i<3;i++)el('circle',{cx:470+i*70,cy:520,r:18,fill:'none',stroke:C.brown,'stroke-width':6},'dots');
+  const rm=rng(3);for(let i=0;i<14;i++)el('circle',{cx:rm()*1080,cy:300+rm()*1100,r:4+rm()*6,fill:'#fff',opacity:.6},'motes');
+}
+function buildRays(){
+  let s='';const n=20;
+  for(let i=0;i<n;i++){const a0=i*2*Math.PI/n,a1=a0+Math.PI/n;s+=`<path d="M0 0 L${2600*Math.cos(a0)} ${2600*Math.sin(a0)} L${2600*Math.cos(a1)} ${2600*Math.sin(a1)}Z" fill="#E7D7BC"/>`;}
+  $('raysG').innerHTML=s;
+  const star='M0 -28 Q4 -4 28 0 Q4 4 0 28 Q-4 4 -28 0 Q-4 -4 0 -28Z';
+  [[150,760],[640,780],[110,1500],[660,1560],[960,1120],[930,700]].forEach(([x,y],i)=>el('path',{d:star,fill:i%2?'#E9B949':'#fff',stroke:i%2?'none':'#E9B949','stroke-width':3,'data-x':x,'data-y':y},'sparkles'));
+  const heart='M0 18 C-30 -4 -26 -30 -10 -30 C-2 -30 0 -22 0 -18 C0 -22 2 -30 10 -30 C26 -30 30 -4 0 18Z';
+  for(let i=0;i<8;i++)el('path',{d:heart,fill:i%3===0?'#F7B3BD':C.pink,stroke:'#fff','stroke-width':4},'hearts');
+}
+
+/* ---------- 문구 ---------- */
+function buildTexts(){
+  const tx='texts';
+  // 장면1
+  add(tx,`<g id="pill1"><rect x="-200" y="-40" width="400" height="80" rx="40" fill="${C.brown}"/><text y="14" text-anchor="middle" font-family="Jua" font-size="40" fill="${C.cream}">크라운 × 국순당 신상</text></g>`);
+  makeText(tx,'t1','100% 국내산 쌀',540,430,{size:124});
+  // 장면2
+  makeText(tx,'t2','세 번의 발효로',540,420,{size:124});
+  makeText(tx,'bogle','보글보글',0,0,{size:66,fill:'#9C7E5F',sw:12});
+  makeText(tx,'bbong','뽕!',0,0,{size:210,font:'BHS',fill:C.accent,sw:20});
+  // 장면3
+  makeText(tx,'t3','부드러운 풍미',540,400,{size:124});
+  makeText(tx,'t3s','발효쌀 츄잉캔디',540,510,{size:58,fill:C.mid,sw:12});
+  makeText(tx,'jjuk','쭈~욱',540,1530,{size:120,fill:C.accent,sw:16});
+  // 장면4~5
+  const hl=el('g',{id:'hl4'},tx);
+  makeText(hl,'t4a','막 끌리는 맛,',0,0,{size:118,fill:C.mid});
+  makeText(hl,'t4b','막쮸~',0,250,{size:250,font:'BHS',fill:'#2A1E17',sw:22});
+  makeText(tx,'jju','쮸~',0,0,{size:110,fill:C.pink,sw:14});
+  add(tx,`<g id="pill5"><rect x="-260" y="-48" width="520" height="96" rx="48" fill="${C.brown}"/><text y="17" text-anchor="middle" font-family="Jua" font-size="50" fill="${C.cream}">발효쌀 츄잉캔디</text></g>`);
+  makeText(tx,'t5s','100% 국내산 쌀 · 세 번의 발효',540,1745,{size:46,fill:C.mid,sw:10,shadow:false});
+  makeText(tx,'t5b','CROWN × 국순당',540,1840,{size:58,fill:C.brown,sw:10,shadow:false});
+}
+
+/* ---------- 시간에 따라 그리기 ---------- */
+const R0=[4.7,6.1,7.5];
+function render(t){
+  // 장면 표시
+  O('s1',t<3.45?1:0);O('s1front',1-prog(t,3.15,3.45));
+  O('s2',t<10.15?prog(t,3.15,3.45):0);
+  O('s3',t>=10.15?1:0);
+
+  /* 장면1: 논 */
+  STALKS.forEach(s=>T(s.g,s.x,s.y,1,Math.sin(t*2.2+s.ph)*s.amp));
+  T('cloud1',120+t*18,330);T('cloud2',650-t*12,240);
+  O('sunGlow',.7+.3*Math.sin(t*2));
+  // 알록이(쌀알)
+  let gx=540,gy,gs=1,gr=0,ga=1,gsx=1,gsy=1;
+  if(t<3.25){
+    const pu=prog(t,.5,1.1);gy=lerp(1900,1230,eOutBack(pu));
+    if(t>1.1)gy+=Math.sin((t-1.1)*5)*10;gr=Math.sin(t*3)*4;
+    const sq=prog(t,2.45,2.7),up=prog(t,2.7,3.2);
+    if(t>2.45&&t<2.7){gsy=1-.15*Math.sin(sq*Math.PI);gsx=1+.1*Math.sin(sq*Math.PI);}
+    if(t>2.7){gy=lerp(1230,-260,eInCubic(up));gsx=.9;gsy=1.12;}
+    setFace('g',(t>1.9&&t<2.02)?'closed':'open',t>2.7?'open':'smile');
+    ga=t<.5?0:1;
+  }else{
+    const f=prog(t,3.3,3.95);gy=lerp(-260,1010,eInCubic(f));gr=f*400;gs=lerp(1,.5,eInCubic(f));
+    setFace('g','sq','open');ga=t<3.95?1:0;
+  }
+  T('grain',gx,gy,gs,gr,gsx,gsy);O('grain',ga);
+  $('gArmR').setAttribute('transform',t<2.4?`rotate(${Math.sin(t*9)*18} 66 10)`:'');
+
+  /* 장면2: 항아리 */
+  let jsx=1,jsy=1,lidY=1022,lidR=0,lidX=540;
+  const land=prog(t,4.0,4.3);
+  if(t<4.3){lidY=lerp(-200,1022,eInCubic(land));}
+  if(t>=4.3&&t<4.6){const p=prog(t,4.3,4.6);jsy=1-.06*Math.sin(p*Math.PI);jsx=1+.04*Math.sin(p*Math.PI);}
+  R0.forEach(r0=>{if(t>=r0&&t<r0+1.3){const p=(t-r0)/1.3,d=1-p;
+    jsx+=.05*Math.sin(p*Math.PI*6)*d;jsy-=.05*Math.sin(p*Math.PI*6)*d;
+    lidY-=Math.abs(Math.sin(p*Math.PI*4))*34*d;lidR=Math.sin(p*Math.PI*5)*6*d;}});
+  if(t>=8.9&&t<9.25){const p=prog(t,8.9,9.25);jsy=1-.08*p;jsx=1+.05*p;lidX=540+Math.sin(t*90)*6*p;}
+  if(t>=9.25){const p=prog(t,9.25,9.75);lidY=lerp(1022,-320,eOutCubic(p));lidR=p*220;lidX=540+p*160;
+    const q=prog(t,9.25,9.6);jsy=lerp(1.06,1,eOutElastic(q));}
+  T('jar',540,1562,1,0,jsx,jsy);
+  T('lid',lidX,lidY+ (1-jsy)*520,1,lidR);
+  O('jarMouth',t<4.2?1:0);
+  // 물방울(쌀알 입수)
+  [...$('splash').children].forEach((c,i)=>{const p=prog(t,3.95,4.45),a=(i/5-.5)*2.2;
+    c.setAttribute('cx',540+Math.sin(a)*p*170);c.setAttribute('cy',1030-Math.sin(p*Math.PI)*120-(1-Math.abs(a))*40*p);O(c,p>0&&p<1?1-p*.6:0);});
+  // 뚜껑 착지 먼지
+  [...$('dust').children].forEach((c,i)=>{const p=prog(t,4.3,4.85),side=i<3?-1:1,k=i%3;
+    c.setAttribute('cx',540+side*(190+p*(60+k*40)));c.setAttribute('cy',1020-k*22-p*30);c.setAttribute('r',10+p*(18+k*6));O(c,p>0&&p<1?(1-p)*.9:0);});
+  // 거품
+  BUB.forEach(b=>{const r0=R0[b.round],p=prog(t,r0+b.d,r0+b.d+.95);
+    let s=1,a=p>0&&p<1?1:0;if(p>.82){s=1+(p-.82)*4;a*=1-(p-.82)/.18;}
+    T(b.c,b.x0+Math.sin(p*7+b.ph)*18,990-eOutCubic(p)*b.rise,s);O(b.c,a);});
+  // 회차 배지
+  let ri=-1;R0.forEach((r0,i)=>{if(t>=r0-.05)ri=i;});
+  if(ri>=0){$('badgeNum').textContent=ri+1;const p=prog(t,R0[ri]-.05,R0[ri]+.35);
+    const out=prog(t,9.1,9.3);T('badge',855,800,eOutBack(p)*(1-out),lerp(-25,0,eOutCubic(p)));O('badge',1-out);}
+  else O('badge',0);
+  [...$('dots').children].forEach((c,i)=>{const p=prog(t,R0[i],R0[i]+.3);
+    c.setAttribute('fill',p>0?C.brown:'none');c.setAttribute('r',18*(p>0?eOutBack(p)*.3+.7+.0:1));});
+  O('dots',prog(t,4.4,4.7)*(1-prog(t,9.1,9.3)));
+  // 터지는 효과
+  {const p=prog(t,9.25,9.75);T('burst',540,960,lerp(.5,1.5,eOutCubic(p)));O('burst',p>0?1-p:0);}
+
+  /* 장면3~5 배경 */
+  T('raysG',540,1120,1,t*5);
+  O('pinkTint',.55*prog(t,12.9,13.4)*(1-prog(t,15.8,16.3)));
+  [...$('sparkles').children].forEach((s,i)=>{const v=Math.max(0,Math.sin(t*3+i*1.7));
+    T(s,+s.dataset.x,+s.dataset.y,.4+v*.9,t*40);O(s,t>16.3?v:0);});
+  [...$('hearts').children].forEach((h,i)=>{const t0=14.35+i*.16,p=prog(t,t0,t0+1.3),ang=(i%2?1:-1)*(0.3+(i%4)*.18);
+    T(h,540+Math.sin(ang)*p*420,1250-p*560,(p>0?eOutBack(prog(t,t0,t0+.3)):0)*(1.2+(i%3)*.4),Math.sin(p*6)*15);O(h,p>0&&p<1?1-Math.pow(p,3):0);});
+  O('flash',t<10.15?prog(t,9.95,10.15):1-prog(t,10.15,10.55));
+
+  /* 막쮸 캐릭터 */
+  let cx=540,cy=0,cs=1,cr=0,csx=1,csy=1,ca=1;
+  let eyes='open',mouth='smile';
+  if(t<9.3)ca=0;
+  else if(t<10.15){const p=prog(t,9.3,9.9);cy=lerp(1020,720,eOutBack(p))+(t>9.9?Math.sin((t-9.9)*8)*8:0);cs=lerp(.3,1,eOutCubic(p));mouth='open';}
+  else{
+    cy=1080;cs=1.6;
+    const st=prog(t,10.6,11.25),rel=prog(t,11.5,12.4);
+    let a=t<11.5?eInOut(st):1-eOutElastic(rel);
+    csx=1+.6*a;csy=1-.22*a;
+    if(a>.4){eyes='sq';mouth='open';}
+    cy+=Math.sin(t*4)*8;
+    if(t>=12.9){const p=eInOut(prog(t,12.9,13.4));cy=lerp(1080,1210,p);cs=lerp(1.6,2.0,p);}
+    if(t>=14.3&&t<15.5){eyes='closed';mouth='kiss';const k=prog(t,14.3,14.6);cs*=1+.08*Math.sin(k*Math.PI);cr=-4*Math.sin(prog(t,14.3,15.5)*Math.PI);}
+    if(t>=15.8){const p=eInOut(prog(t,15.8,16.4));cx=lerp(540,810,p);cy=lerp(1210,1335,p);cs=lerp(2.0,.95,p);cr=lerp(0,6,p);}
+    if((t>13.6&&t<13.72)||(t>17.8&&t<17.92))eyes='closed';
+  }
+  setFace('c',eyes,mouth);
+  T('candy',cx,cy,cs,cr,csx,csy);O('candy',ca);
+  const wave=t>16.4?Math.sin((t-16.4)*9)*24:0;
+  $('cArmR').setAttribute('transform',`translate(128 18) rotate(${-10+wave})`);
+
+  /* 포장 */
+  {const p=prog(t,15.9,16.6);T('pack',395,lerp(2500,1130,eOutBack(p))+Math.sin(t*2.4)*8,1,lerp(12,-5,eOutCubic(p)));O('pack',p>0?1:0);
+   const sh=prog(t,17.0,17.7);$('packShine').setAttribute('transform',`translate(${lerp(-500,500,sh)} 0)`);}
+
+  /* 문구 */
+  {const p=prog(t,.3,.75),out=prog(t,3.0,3.25);T('pill1',540,250,eOutBack(p)*(1-out));O('pill1',p>0?1-out:0);}
+  animText('t1',t,.8,{out:[3.0,3.25]});
+  animText('t2',t,4.3,{out:[9.95,10.15]});
+  {let bt=-1;R0.forEach(r0=>{if(t>=r0&&t<r0+1.2)bt=r0;});
+   TX.bogle.g.setAttribute('transform',`translate(${bt>=0?235:0} 860) rotate(-12) translate(0 0)`);
+   animText('bogle',t,bt>=0?bt:999,{stagger:.06,dur:.3,out:bt>=0?[bt+.9,bt+1.2]:null,rise:20});}
+  TX.bbong.g.setAttribute('transform','translate(790 760) rotate(-12)');
+  animText('bbong',t,9.25,{stagger:.06,dur:.35,out:[9.85,10.1]});
+  animText('t3',t,10.4,{out:[12.7,12.95]});
+  animText('t3s',t,10.9,{stagger:.03,out:[12.7,12.95]});
+  {const st=prog(t,10.6,11.25),rel=prog(t,11.5,12.4),a=t<11.5?eInOut(st):1-eOutElastic(rel);
+   TX.jjuk.g.setAttribute('transform',`translate(540 1530) scale(${1+.5*a} 1) translate(-540 -1530)`);
+   animText('jjuk',t,10.75,{stagger:.06,out:[12.4,12.7]});}
+  {const p=eInOut(prog(t,15.8,16.4));
+   TX.t4a.g.parentNode.setAttribute('transform',`translate(540 ${lerp(330,250,p)}) scale(${lerp(1,.72,p)})`);
+   animText('t4a',t,13.15);animText('t4b',t,14.3,{stagger:.09,dur:.5,rise:80});}
+  TX.jju.g.setAttribute('transform','translate(830 930) rotate(10)');
+  animText('jju',t,14.4,{stagger:.08,out:[15.3,15.6]});
+  {const p=prog(t,16.7,17.15);T('pill5',540,1640,eOutBack(p));O('pill5',p>0?1:0);}
+  animText('t5s',t,16.95,{stagger:.025,rise:30});
+  animText('t5b',t,17.2,{stagger:.04,rise:30});
+}
+
+(async()=>{
+  await Promise.all(['Jua','BHS','Gowun'].map(f=>document.fonts.load(`100px ${f}`,'막쮸가나다')));
+  await document.fonts.ready;
+  buildField();buildJarFx();buildRays();buildGrain();buildCandy();buildPack();buildTexts();
+  window.render=render;
+  const q=new URLSearchParams(location.search);
+  render(q.has('t')?+q.get('t'):0);
+  if(q.has('play')){const s=performance.now();const loop=()=>{render(((performance.now()-s)/1000)%20);requestAnimationFrame(loop);};loop();}
+  window.READY=true;
+})();
+</script>
+</body></html>
