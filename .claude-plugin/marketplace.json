@@ -1,0 +1,5 @@
+{
+  "name": "jaekuk-mods",
+  "owner": { "name": "jaekuk8" },
+  "plugins": [{ "name": "quick-band", "source": "./quick-band" }]
+}
